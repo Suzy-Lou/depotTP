@@ -2,7 +2,6 @@ const login = require('../models/user.json')
 const fs = require("fs")
 
 const user = require('../models/user_model.js')
-const dpe = require('../models/model.js')
 const bcrypt = require('bcrypt')
 
 
@@ -41,6 +40,11 @@ exports.getUser = async function(email, password){
 
 
   exports.createUser = async function(nom,psw,email,){
+    let existingUser = await user.findOne({ email: email });
+    if (existingUser) {
+        console.log("Un utilisateur avec la même adresse mail existe déjà");
+        return null;
+    }
 
     let sel = await bcrypt.genSalt(10);
     let pswcrypt = await bcrypt.hash(psw,sel);
@@ -53,17 +57,3 @@ exports.getUser = async function(email, password){
     newUser.save().then(() => console.log("user created"));
 }
   
-exports.getAddressServ = async function(Etiquette_GES,Etiquette_DPE,Code_Postal){
-  let address = await dpe.find({ "Etiquette_GES": Etiquette_GES,"Etiquette_DPE": Etiquette_DPE,"Code_Postal": Code_Postal }).then((results) => {
-    return results.map(result => result["Adresse_(BAN)"]);
-    });
-
-    console.log("Adresses correspondantes:");
-    let addressFiltered;
-    address.forEach(results => {
-      addressFiltered.push(results["Adresse_(BAN)"]);
-    });
-
-    return addressFiltered;
-
-}
