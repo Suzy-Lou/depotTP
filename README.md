@@ -4,7 +4,7 @@ Pour lancer le script il faut taper la commande npm run dev
 
 
 git add -A
-git commit -a "commentaire du commit"
+git commit -m "commentaire du commit"
 git push
 
 Pour faire les requetes : 
@@ -58,3 +58,8 @@ dans auth - bearer mettre le token
 
 Je me suis arretée à la partie où on enregistre la recherche dans la base de donnée mongoose
 je ne gère donc pas des requêtes en double ni la suppression
+
+
+.env
+ACCESS_TOKEN_SECRET=XXXXXXXXXXXX
+REFRESH_TOKEN_SECRET=XXXXXXXXXXXX
