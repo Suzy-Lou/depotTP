@@ -63,3 +63,4 @@ je ne gère donc pas des requêtes en double ni la suppression
 .env
 ACCESS_TOKEN_SECRET=XXXXXXXXXXXX
 REFRESH_TOKEN_SECRET=XXXXXXXXXXXX
+MONGO_URL=url

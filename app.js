@@ -8,7 +8,7 @@ const server = require('http')
 const router = require("./src/loader/route.js");
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://student:ensim@clusterdpe.dly181i.mongodb.net/dpe?retryWrites=true&w=majority').then(() => console.log("connected"));
+mongoose.connect(process.env.MONGO_URL).then(() => console.log("connected"));
 
 
 app.use(express.json())
