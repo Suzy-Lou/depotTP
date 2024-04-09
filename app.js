@@ -1,7 +1,8 @@
 const express = require('express')
 require('dotenv').config();
 const app = express();
-const port = 4000;
+const port = process.env.PORT
+const localhost = process.env.IP
 const server = require('http')
 
 
@@ -16,7 +17,8 @@ app.use(express.json())
 app.use(router.getRouter())
 
 
-
-app.listen(port,()=>{
+console.log(localhost);
+app.listen(port,localhost,()=>{
+	
     console.log(`Example app listening on port ${port}`)
 })
